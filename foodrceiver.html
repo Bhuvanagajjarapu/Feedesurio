@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .donation-form {
+            margin-top: 50px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<style>
+    *{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
+}
+.banner{
+    width:100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .content{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(1, 0, 5, 0.6),rgba(4, 1, 17, 0.6));
+
+
+
+}
+nav{
+    width: 60%;
+    position: fixed;
+    backdrop-filter: blur(40px);
+    background-image: linear-gradient(rgba(34, 9, 133, 0.2),rgba(11, 8, 24, 0.3));
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+nav .logo{
+    width: 150px;
+    height: 50px;
+    margin-left: 8%;
+}
+
+nav ul li{
+    list-style: none;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.navbar{
+    display: flex;
+    margin-right: 4vh;
+    padding: 15px;
+}
+
+.navbar a{
+    color: white;
+    font-size: 18px;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-weight: 500;   
+    text-decoration: none;
+    transition: ease 0.40s;
+}
+
+.navbar a:hover,.navbar a.active{
+
+    color: black;
+    background: white;
+    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+    border-radius: 5px;
+    
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+</style>
+<body>
+    <div class="container mt-4">
+        <nav>
+            
+            
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Home</a>
+                    <a href="#fwmanage">What We Do</a>
+                    
+                    <a href="./about.html">About Us</a>
+                    <a href="./contact.html">Feedback</a>
+                </li>
+            </ul>
+        </nav>
+        <br><br><br><br>
+
+<body>
+    <div class="container donation-form">
+        <h2>Listing Type: Receiver</h2>
+        <br>
+        <br>
+        <form id="donationForm">
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Enter need of the food" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="foodType">Type of Food</label>
+                <select class="form-control" id="foodType" required>
+                    <option value="">Select</option>
+                    <option value="veg">Veg</option>
+                    <option value="nonveg">Non-veg</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="foodQuantity">Food Quantity</label>
+                <select class="form-control" id="foodQuantity" required>
+                    <option value="">Select</option>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">For how many</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter for how many members they needed the food" required>
+            </div>
+            <div class="form-group">
+                <label for="expirationTime">Expiration Time</label>
+                <input type="time" class="form-control" id="expirationTime" required>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                <label class="form-check-label" for="exampleCheck1">I assure that I will never waste the food I receive</label>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            var description = document.getElementById('description').value.trim();
+            var foodType = document.getElementById('foodType').value;
+            var foodQuantity = document.getElementById('foodQuantity').value;
+            var title = document.getElementById('title').value.trim();
+            var expirationTime = document.getElementById('expirationTime').value;
+            var checkbox = document.getElementById('exampleCheck1');
+            
+            // Basic validation
+            if (!description || !foodType || !foodQuantity || !title || !expirationTime || !checkbox.checked) {
+                alert('Please fill in all the required fields and accept the terms.');
+                return;
+            }
+
+            // Redirect if validation passes
+            window.location.href = 'RGPS.html';
+        }
+    </script>
+
+</body>
+
+</html>

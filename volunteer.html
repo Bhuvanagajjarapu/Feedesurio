@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Restaurant Details</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        list-style: none;
+        scroll-behavior: smooth;
+    }
+
+    .banner {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100vh;
+        background-image: linear-gradient(rgba(1, 0, 5, 0.6), rgba(4, 1, 17, 0.6));
+    }
+
+    nav {
+        width: 100%;
+        position: fixed;
+        backdrop-filter: blur(40px);
+        background-image: linear-gradient(rgba(34, 9, 133, 0.2), rgba(11, 8, 24, 0.3));
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    nav .logo {
+        width: 150px;
+        height: 50px;
+        margin-left: 8%;
+    }
+
+    nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin-left: 40px;
+    }
+
+    .navbar {
+        display: flex;
+        margin-right: 4vh;
+        padding: 15px;
+    }
+
+    .navbar a {
+        color: white;
+        font-size: 18px;
+        padding: 10px 22px;
+        border-radius: 4px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: ease 0.40s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+        color: black;
+        background: white;
+        box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+        border-radius: 5px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+    }
+
+</style>
+
+<body>
+    <nav>
+
+
+        <ul class="navbar">
+            <li>
+                <a href="index.html">Home</a>
+                <a href="#fwmanage">What We Do</a>
+
+                <a href="./about.html">About Us</a>
+                <a href="./contact.html">Feedback</a>
+            </li>
+        </ul>
+    </nav>
+    <br><br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center mb-4">Volunteers Details</h1>
+
+                <form id="restaurantForm">
+                    <div class="form-group">
+                        <label for="business-name">Business Name<sup class="text-danger">*</sup></label>
+                        <input type="text" class="form-control" id="business-name" placeholder="Enter Business Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-name">Contact Name (Optional)</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="Enter Contact Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">+91 Mobile Number<sup class="text-danger">*</sup></label>
+                        <input type="tel" class="form-control" id="phone-number" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-id">Email Id<sup class="text-danger">*</sup></label>
+                        <input type="email" class="form-control" id="email-id" placeholder="Enter Email Id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address<sup class="text-danger">*</sup></label>
+                        <textarea class="form-control" id="address" rows="3" placeholder="Enter Address" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="pin-code">Pin Code<sup class="text-danger">*</sup></label>
+                            <input type="number" class="form-control" id="pin-code" placeholder="Enter Pin Code" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="city">City<sup class="text-danger">*</sup></label>
+                            <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="pin-location-map">
+                            <label class="form-check-label" for="pin-location-map">
+                                Pin Location by map
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+
+                    <!-- Hidden Alert Card -->
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3U"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function submitForm() {
+            // Validate the form (you can add your own validation logic here)
+            var form = document.getElementById('restaurantForm');
+            if (form.checkValidity()) {
+                // Redirect to DGPS.html
+                window.location.href = "VL.html";
+            }
+            form.classList.add('was-validated');
+        }
+    </script>
+</body>
+
+</html>

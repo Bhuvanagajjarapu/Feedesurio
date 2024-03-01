@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Current Location</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            scroll-behavior: smooth;
+        }
+
+        .banner {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(1, 0, 5, 0.6), rgba(4, 1, 17, 0.6));
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            backdrop-filter: blur(40px);
+            background-image: linear-gradient(rgba(34, 9, 133, 0.2), rgba(11, 8, 24, 0.3));
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 15%);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        nav .logo {
+            width: 150px;
+            height: 50px;
+            margin-left: 8%;
+        }
+
+        nav ul li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            margin-right: 4vh;
+            padding: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            font-size: 18px;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: ease 0.40s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: black;
+            background: white;
+            box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+            border-radius: 5px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #demo {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #demo a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        #demo a:hover {
+            text-decoration: underline;
+        }
+ #continueBtn {
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <nav>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Home</a>
+                    <a href="#fwmanage">What We Do</a>
+                    <a href="./about.html">About Us</a>
+                    <a href="./contact.html">Feedback</a>
+                </li>
+            </ul>
+        </nav>
+        <br><br><br><br>
+
+        <body>
+            <h1>Get Current Location</h1>
+
+            <button onclick="getLocation()">Get Location</button>
+
+            <p id="demo"></p>
+
+            <button id="continueBtn" style="display:none;" onclick="continueToDL()">Continue</button>
+
+            <script>
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition, showError);
+                    } else {
+                        document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+                    }
+                }
+
+                function showPosition(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    var mapLink = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+
+                    document.getElementById("demo").innerHTML = "Latitude: " + latitude + "<br>Longitude: " +
+                        longitude + '<br><a href="' + mapLink + '" target="_blank">View on Google Maps</a>';
+                        
+
+                    // Show the "Continue" button after getting location
+                    document.getElementById("continueBtn").style.display = "block";
+                }
+
+                function continueToDL() {
+                    // Redirect to DL.html
+                    window.location.href = "DL.html";
+                }
+
+                function showError(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            document.getElementById("demo").innerHTML = "User denied the request for Geolocation.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            document.getElementById("demo").innerHTML = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            document.getElementById("demo").innerHTML = "The request to get user location timed out.";
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            document.getElementById("demo").innerHTML = "An unknown error occurred.";
+                            break;
+                    }
+                }
+            </script>
+        </body>
+
+</html>
